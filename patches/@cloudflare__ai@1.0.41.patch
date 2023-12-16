@@ -1,0 +1,19 @@
+diff --git a/dist/session.js b/dist/session.js
+index fc630c416acb016c63ad333ab2c125295f4f5c66..d5d18aae2d933279533067b15631d304cfc7eacf 100644
+--- a/dist/session.js
++++ b/dist/session.js
+@@ -22,13 +22,11 @@ export class InferenceSession {
+             inferRequest.stream = options?.stream;
+         }
+         const body = JSON.stringify(inferRequest);
+-        const compressedReadableStream = new Response(body).body.pipeThrough(new CompressionStream("gzip"));
+         const fetchOptions = {
+             method: "POST",
+-            body: compressedReadableStream,
++            body,
+             headers: {
+                 ...(this.options?.extraHeaders || {}),
+-                "content-encoding": "gzip",
+                 "cf-consn-sdk-version": "1.0.41",
+                 "cf-consn-model-id": `${this.options.prefix ? `${this.options.prefix}:` : ""}${this.model}`,
+                 "cf-consn-routing-model": getModelSettings(this.model, "route") || "default",

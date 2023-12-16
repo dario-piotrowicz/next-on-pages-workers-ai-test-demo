@@ -1,0 +1,25 @@
+main, form, section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+main {
+    align-items: center;
+}
+
+button {
+    align-self: end;
+    margin-block-start: 2rem;
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+form, section {
+    width: 100%;
+    max-width: 50rem;
+}
+
